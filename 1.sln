@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "seca", "http://bozoxp06:/seca/seca.vbproj", "{4DCEFAE6-775D-489E-B5C7-64AAFD1FCB67}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{4DCEFAE6-775D-489E-B5C7-64AAFD1FCB67}.Debug.ActiveCfg = Debug|.NET
+		{4DCEFAE6-775D-489E-B5C7-64AAFD1FCB67}.Debug.Build.0 = Debug|.NET
+		{4DCEFAE6-775D-489E-B5C7-64AAFD1FCB67}.Release.ActiveCfg = Release|.NET
+		{4DCEFAE6-775D-489E-B5C7-64AAFD1FCB67}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>Banner</title> 
+		<!-- Copiar dentro del tag HEAD -->
+		<script language="JavaScript">
+
+var speed = 100 
+var pause = 3000
+var timerID = null
+var bannerRunning = false
+var ar = new Array()
+ar[0] = ">>>> SECA <<<<"
+ar[1] = " SISTEMA DE EVALUACION Y CONTROL DE ALUMNOS"
+ar[2] = "FUNPALICE"
+var currentMessage = 0
+var offset = 0
+function stopBanner() {
+if (bannerRunning)
+clearTimeout(timerID)
+bannerRunning = false
+}
+function startBanner() {
+stopBanner()
+showBanner()
+}
+function showBanner() {
+var text = ar[currentMessage]
+if (offset < text.length) {
+if (text.charAt(offset) == " ")
+offset++ 
+var partialMessage = text.substring(0, offset + 1) 
+window.status = partialMessage
+offset++ // IE sometimes has trouble with "++offset"
+timerID = setTimeout("showBanner()", speed)
+bannerRunning = true
+} else {
+offset = 0
+currentMessage++
+if (currentMessage == ar.length)
+currentMessage = 0
+timerID = setTimeout("showBanner()", pause)
+bannerRunning = true
+}
+}
+startBanner();
+// -->
+		</script>
+		<meta content="JavaScript" name="vs_defaultClientScript">
+		<meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+		<meta content="Microsoft FrontPage 5.0" name="GENERATOR">
+		<meta content="FrontPage.Editor.Document" name="ProgId">
+		<meta content="Microsoft Visual Studio.NET 7.0" name="Originator">
+		<script language="javascript" id="clientEventHandlersJS">
+		</script>
+	</head>
+	<body bottomMargin="1" bgProperties="fixed" background="http:../Imagenes/Banner Seca2.jpg">
+		&nbsp;
+		<TABLE id="Table1" style="Z-INDEX: 101; LEFT: 16px; WIDTH: 874px; POSITION: absolute; TOP: 16px; HEIGHT: 122px" cellSpacing="1" cellPadding="1" border="0" frame="void">
+			<TR>
+				<TD style="WIDTH: 174px"><IMG style="WIDTH: 168px; HEIGHT: 107px" height="107" hspace="0" src="../Imagenes/Logo%20FunpaliceF.gif" width="168" align="top" border="0"></TD>
+				<TD style="WIDTH: 552px" vAlign="top" noWrap align="middle" width="552" rowSpan="1">
+					<P dir="ltr" style="MARGIN-RIGHT: 0px"><font face="Arial Black"><font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fundación 
+								para Niños con Parálasis Cerebral</font><br>
+							<font color="#ffff00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+								Sistema de Evaluación y <FONT color="#ffff00">Control de Alumnos</FONT>
+								<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+								S.E.C.A. (Sistema Final)</font></font></P>
+				</TD>
+			</TR>
+		</TABLE>
+		<p dir="ltr" style="MARGIN-RIGHT: 0px">&nbsp;</p>
+		<p dir="ltr" style="MARGIN-RIGHT: 0px">&nbsp;</p>
+	</body>
+</html>

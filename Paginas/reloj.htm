@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>reloj</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+		<script language="javascript" id="clientEventHandlersJS">
+		</script>
+		<script language="javascript">
+<!--
+/*By George Chiang (JK's JavaScript tutorial)
+http://www.javascriptkit.com
+Credit MUST stay intact for use*/
+var dn
+c1=new Image(); c1.src="../imagenes/c1.gif"
+c2=new Image(); c2.src="../imagenes/c2.gif"
+c3=new Image(); c3.src="../imagenes/c3.gif"
+c4=new Image(); c4.src="../imagenes/c4.gif"
+c5=new Image(); c5.src="../imagenes/c5.gif"
+c6=new Image(); c6.src="../imagenes/c6.gif"
+c7=new Image(); c7.src="../imagenes/c7.gif"
+c8=new Image(); c8.src="../imagenes/c8.gif"
+c9=new Image(); c9.src="../imagenes/c9.gif"
+c0=new Image(); c0.src="../imagenes/c0.gif"
+cb=new Image(); cb.src="../imagenes/cb.gif"
+cam=new Image(); cam.src="../imagenes/cam.gif"
+cpm=new Image(); cpm.src="../imagenes/cpm.gif"
+function extract(h,m,s,type){
+if (!document.images)
+return
+if (h<=9){
+document.images.a.src=cb.src
+document.images.b.src=eval("c"+h+".src")
+}
+else {
+document.images.a.src=eval("c"+Math.floor(h/10)+".src")
+document.images.b.src=eval("c"+(h%10)+".src")
+}
+if (m<=9){
+document.images.d.src=c0.src
+document.images.e.src=eval("c"+m+".src")
+}
+else {
+document.images.d.src=eval("c"+Math.floor(m/10)+".src")
+document.images.e.src=eval("c"+(m%10)+".src")
+}
+if (s<=9){
+document.g.src=c0.src
+document.images.h.src=eval("c"+s+".src")
+}
+else {
+document.images.g.src=eval("c"+Math.floor(s/10)+".src")
+document.images.h.src=eval("c"+(s%10)+".src")
+}
+if (dn=="AM") document.j.src=cam.src
+else document.images.j.src=cpm.src
+}
+function show3(){
+if (!document.images)
+return
+var Digital=new Date()
+var hours=Digital.getHours()
+var minutes=Digital.getMinutes()
+var seconds=Digital.getSeconds()
+dn="AM" 
+if ((hours>=12)&&(minutes>=1)||(hours>=13)){
+dn="PM"
+hours=hours-12
+}
+if (hours==0)
+hours=12
+extract(hours,minutes,seconds,dn)
+setTimeout("show3()",1000)
+}
+//-->
+		</script>
+	</head>
+	<body MS_POSITIONING="GridLayout" onload="show3()" background="../exportar/fondo menu.jpg">
+		<!-- Reloj Digital -->
+		<table>
+			<tr>
+				<TD vAlign="center" align="right"><IMG src="../imagenes/cb.gif" name="a" width="16" height="21"><IMG src="../imagenes/cb.gif" name="b" width="16" height="21"><IMG src="../imagenes/colon.gif" name="c" width="9" height="21"><IMG src="../imagenes/cb.gif" name="d" width="16" height="21"><IMG src="../imagenes/cb.gif" name="e" width="16" height="21"><IMG src="../imagenes/colon.gif" name="f" width="9" height="21"><IMG src="../imagenes/cb.gif" name="g" width="16" height="21"><IMG src="../imagenes/cb.gif" name="h" width="16" height="21"><IMG src="../imagenes/cam.gif" name="j" width="16" height="21"></TD>
+				</TD></tr>
+		</table>
+	</body>
+</html>

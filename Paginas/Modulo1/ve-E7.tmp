@@ -1,0 +1,109 @@
+Public Class Calandari_insert
+    Inherits System.Web.UI.Page
+    Protected WithEvents List1 As System.Web.UI.WebControls.DropDownList
+    Protected WithEvents List2 As System.Web.UI.WebControls.DropDownList
+    Protected WithEvents Button2 As System.Web.UI.WebControls.Button
+    Protected WithEvents Conn As System.Data.SqlClient.SqlConnection
+    Protected WithEvents SqlDataAdapter1 As System.Data.SqlClient.SqlDataAdapter
+    Protected WithEvents SqlSelectCommand1 As System.Data.SqlClient.SqlCommand
+    Protected WithEvents Calendar1 As System.Web.UI.WebControls.Calendar
+    Protected WithEvents SqlDataAdapter2 As System.Data.SqlClient.SqlDataAdapter
+    Protected WithEvents SqlSelectCommand2 As System.Data.SqlClient.SqlCommand
+    Protected WithEvents Button1 As System.Web.UI.WebControls.Button
+
+#Region " Web Form Designer Generated Code "
+
+    'This call is required by the Web Form Designer.
+    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.Conn = New System.Data.SqlClient.SqlConnection()
+        Me.SqlDataAdapter1 = New System.Data.SqlClient.SqlDataAdapter()
+        Me.SqlSelectCommand1 = New System.Data.SqlClient.SqlCommand()
+        Me.SqlDataAdapter2 = New System.Data.SqlClient.SqlDataAdapter()
+        Me.SqlSelectCommand2 = New System.Data.SqlClient.SqlCommand()
+        '
+        'Conn
+        '
+        Me.Conn.ConnectionString = "data source=bozoxp06;initial catalog=SECA_DB;persist security info=False;user id=" & _
+        "reporte;workstation id=BOZOXP06;packet size=4096"
+        '
+        'SqlDataAdapter1
+        '
+        Me.SqlDataAdapter1.SelectCommand = Me.SqlSelectCommand1
+        Me.SqlDataAdapter1.TableMappings.AddRange(New System.Data.Common.DataTableMapping() {New System.Data.Common.DataTableMapping("Table", "Evaluacion_M2", New System.Data.Common.DataColumnMapping() {New System.Data.Common.DataColumnMapping("nombre", "nombre"), New System.Data.Common.DataColumnMapping("cod", "cod")})})
+        '
+        'SqlSelectCommand1
+        '
+        Me.SqlSelectCommand1.CommandText = "SELECT nombre, cod_eva AS cod FROM Evaluacion_M2"
+        '
+        'SqlDataAdapter2
+        '
+        Me.SqlDataAdapter2.SelectCommand = Me.SqlSelectCommand2
+        Me.SqlDataAdapter2.TableMappings.AddRange(New System.Data.Common.DataTableMapping() {New System.Data.Common.DataTableMapping("Table", "Alumno_M1", New System.Data.Common.DataColumnMapping() {New System.Data.Common.DataColumnMapping("alumno", "alumno"), New System.Data.Common.DataColumnMapping("cod", "cod")})})
+        '
+        'SqlSelectCommand2
+        '
+        Me.SqlSelectCommand2.CommandText = "SELECT apellido + ', " & Microsoft.VisualBasic.ChrW(13) & Microsoft.VisualBasic.ChrW(10) & "    ' + nombre AS alumno, cod_alumno AS cod FROM Alumno_M1" & _
+        " ORDER BY alumno"
+
+    End Sub
+
+    Private Sub Page_Init(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Init
+        'CODEGEN: This method call is required by the Web Form Designer
+        'Do not modify it using the code editor.
+        InitializeComponent()
+    End Sub
+
+#End Region
+
+    Private Sub Page_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Dim string1, string2, queri As String
+        Dim Comm As System.Data.SqlClient.SqlCommand
+        Me.Conn.Open()
+
+
+        'queri = " select Area, cod_area from area_m5 order by area"
+        'Comm = New System.Data.SqlClient.SqlCommand(queri, Conn)
+        'Comm.ExecuteNonQuery()
+
+        Dim DS As System.Data.DataSet
+        DS = New System.Data.DataSet()
+        SqlDataAdapter1.Fill(DS, "Tables")
+        List1.DataSource = DS.Tables("Tables").DefaultView
+        List1.DataTextField = "nombre"
+        List1.DataValueField = "cod"
+        List1.DataBind()
+
+        Dim DS2 As System.Data.DataSet
+        DS2 = New System.Data.DataSet()
+        SqlDataAdapter2.Fill(DS2, "Tables")
+        List2.DataSource = DS2.Tables("Tables").DefaultView
+        List2.DataTextField = "Alumno"
+        List2.DataValueField = "cod"
+        List2.DataBind()
+
+
+
+        Conn.Close()
+
+
+
+    End Sub
+
+
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+
+
+    End Sub
+    Private Sub selec()
+        Dim strin As String
+        strin = " - " & List1.SelectedIndex & ", " & List2.SelectedIndex
+
+        Response.Write(strin)
+
+
+    End Sub
+
+
+
+End Class

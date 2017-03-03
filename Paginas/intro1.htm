@@ -1,0 +1,97 @@
+<HTML>
+	<HEAD>
+		<title>Intro</title>
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="CODE_LANGUAGE" content="Visual Basic 7.0">
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+	
+	<!-- PRIMER PASO: Copiar dentro del tag HEAD -->
+<style type="text/css"> #divNewsCont{position:absolute; width:350; height:150; overflow:hidden; top:160; left:315; clip:rect(0,350,150,0); visibility:hidden}
+	#divNewsText{position:absolute; top:0; left:0}
+	</style>
+<script type="text/javascript" language="JavaScript">
+function checkBrowser(){
+	this.ver=navigator.appVersion
+	this.dom=document.getElementById?1:0
+	this.ie5=(this.ver.indexOf("MSIE 5")>-1 && this.dom)?1:0;
+	this.ie4=(document.all && !this.dom)?1:0;
+	this.ns5=(this.dom && parseInt(this.ver) >= 5) ?1:0;
+	this.ns4=(document.layers && !this.dom)?1:0;
+	this.bw=(this.ie5 || this.ie4 || this.ns4 || this.ns5)
+	return this
+}
+bw=new checkBrowser()
+
+lstart=100
+loop=true
+// Velocidad
+speed=40
+pr_step=1
+
+function makeObj(obj,nest){
+    nest=(!nest) ? '':'document.'+nest+'.'
+	this.el=bw.dom?document.getElementById(obj):bw.ie4?document.all[obj]:bw.ns4?eval(nest+'document.'+obj):0;
+  	this.css=bw.dom?document.getElementById(obj).style:bw.ie4?document.all[obj].style:bw.ns4?eval(nest+'document.'+obj):0;
+	this.scrollHeight=bw.ns4?this.css.document.height:this.el.offsetHeight
+	this.newsScroll=newsScroll;
+	this.moveIt=b_moveIt; this.x; this.y;
+    this.obj = obj + "Object"
+    eval(this.obj + "=this")
+    return this
+}
+function b_moveIt(x,y){
+	this.x=x;this.y=y
+	this.css.left=this.x
+	this.css.top=this.y
+}
+function newsScroll(speed){
+	if(this.y>-this.scrollHeight){
+		this.moveIt(0,this.y-pr_step)
+		setTimeout(this.obj+".newsScroll("+speed+")",speed)
+	}else if(loop) {
+		this.moveIt(0,lstart)
+		eval(this.obj+".newsScroll("+speed+")")
+	  }
+}
+function newsScrollInit(){
+	oNewsCont=new makeObj('divNewsCont')
+	oNewsScroll=new makeObj('divNewsText','divNewsCont')
+	oNewsScroll.moveIt(0,lstart)
+	oNewsCont.css.visibility='visible'
+	oNewsScroll.newsScroll(speed)
+}
+onload=newsScrollInit;
+</script>
+	</HEAD>
+	<body MS_POSITIONING="GridLayout" bgColor="#6699cc">
+		
+		<!-- SEGUNDO PASO: Copiar dentro del tag BODY -->
+		<div id="divNewsCont">
+		<div id="divNewsText" style="LEFT: -2px; TOP: 9px">
+		<p><font face="Arial" size="3"><b>Sistema de Evaluación y Control de Acceso:</b></font><br><br>
+		<font face="Arial" size="2"><b>Sistema S.E.C.A</b> - Para acceder al sistema por favor autentificarse enlos campos del lado izquierdo, debe de colocar su usuario, clave de acceso y presionar el botón de	ingresar.<br></font></p>
+		<p></p>
+		</div>
+		</div>
+		<form id="Form1" method="post" runat="server" >
+			&nbsp;
+			<TABLE id="Table1" cellSpacing="0" cellPadding="1" width="300" border="1" align="center" bgColor="#ffffff"
+				<TR>
+  <TR>
+  					<TD align="middle" >
+						<P>
+							<asp:Label id="saludos" runat="server" Width="194px" Height="13px" Font-Bold="True">Buenas Tardes</asp:Label></P>
+					</TD></TR>
+				<TR>
+					<TD align="middle">
+						
+					</TD>
+				</TR>
+				<TR>
+					<TD align="middle"><IMG height="99" alt="" src="../Imagenes/Logo FunpaliceF.gif" width="173" align="middle"></TD>
+				</TR>
+			</TABLE>
+		</form>
+	</body>
+</HTML>
